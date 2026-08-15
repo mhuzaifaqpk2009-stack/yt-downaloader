@@ -1,0 +1,87 @@
+1:@echo off
+2:REM ===========================================================================
+3:REM  build_installer.bat
+4:REM  Builds the Windows installer (.exe) using Inno Setup.
+5:REM  Prerequisite: The portable .exe must already be built (run build_portable.bat
+6:REM  or build_all.bat first). Also requires Inno Setup to be installed.
+7:REM ===========================================================================
+8:
+9:setlocal
+10:@echo on
+11:pushd "%~dp0.."
+12:
+13:set "ISS_FILE=%~dp0installer.iss"
+14:
+15:echo [DEBUG] START build_installer.bat
+16:
+17:echo.
+18:echo ===================================================
+19:echo   YT Downloader - Installer Build
+20:echo ===================================================
+21:echo.
+22:
+23:echo [DEBUG] checking dist\YT_Downloader.exe
+24:REM --- Check that portable exe exists ---
+25:if not exist "dist\YT_Downloader.exe" goto :no_portable
+26:
+27:echo [DEBUG] portable exe exists
+28:
+29:echo Using portable executable: dist\YT_Downloader.exe
+30:
+31:goto :has_portable
+32:
+33::no_portable
+34:echo [ERROR] dist\YT_Downloader.exe not found.
+35:echo Please run build_portable.bat or build_all.bat first.
+36:exit /b 1
+37:
+38::has_portable
+39:
+40:REM --- Locate Inno Setup compiler (iscc) ---
+41:set "ISCC="
+42:set "ISS_X86=C:\Progra~2\Inno Setup 6\ISCC.exe"
+43:set "ISS_X64=C:\Progra~1\Inno Setup 6\ISCC.exe"
+44:if exist "%ISS_X86%" set "ISCC=%ISS_X86%"
+45:if exist "%ISS_X64%" set "ISCC=%ISS_X64%"
+46:
+47:if "%ISCC%"=="" (
+48:    where iscc >nul 2>nul
+49:    if errorlevel 1 (
+50:        echo [ERROR] Inno Setup compiler (iscc.exe) not found.
+51:        echo.
+52:        echo Please install Inno Setup (free) from: https://jrsoftware.org/isdl.php
+53:        echo After installation, this script will find it automatically.
+54:        popd
+55:        exit /b 1
+56:    )
+57:    set "ISCC=iscc"
+58:)
+59:
+60:echo Using Inno Setup: %ISCC%
+61:
+62:echo Building installer...
+63:"%ISCC%" "%ISS_FILE%"
+64:if %ERRORLEVEL% neq 0 (
+65:    echo [ERROR] Inno Setup compilation failed.
+66:    popd
+67:    exit /b 1
+68:)
+69:
+70:echo.
+71:echo ===================================================
+72:echo   Installer build complete!
+73:echo   Output: dist\YT_Downloader_Installer.exe
+74:echo.
+75:echo   Installing this .exe will:
+76:echo     - Install to Program Files\YT Downloader
+77:echo     - Create Start Menu shortcut
+78:echo     - Optional Desktop shortcut
+79:echo     - Register uninstaller in Add/Remove Programs
+80:echo.
+81:echo   The installer includes everything (Python, yt-dlp,
+82:echo   ffmpeg) — no internet needed after installation.
+83:echo ===================================================
+84:echo.
+85:
+86:popd
+87:endlocal

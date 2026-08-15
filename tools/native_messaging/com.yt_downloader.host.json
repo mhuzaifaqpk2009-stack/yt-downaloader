@@ -1,0 +1,9 @@
+{
+  "name": "com.yt_downloader.host",
+  "description": "YT Downloader native host",
+  "path": "C:\\Program Files\\YT Downloader\\native_host.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://mpkmfeeejcpjkobjdbapkmincaocpolj/"
+  ]
+}

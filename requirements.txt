@@ -1,0 +1,12 @@
+# YT Downloader – Python dependencies
+# Install with:  pip install -r requirements.txt
+
+# YouTube info extraction & downloading (resilient to YouTube changes)
+yt-dlp>=2024.0.0
+
+# Thumbnail image handling (JPEG → PhotoImage conversion)
+Pillow>=10.0.0
+
+# ---- Build-only (not needed to run from source) ----
+# Uncomment the line below when you're ready to build the portable .exe
+#pyinstaller>=6.0

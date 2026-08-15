@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Open with YT Downloader",
+  "version": "1.0",
+  "description": "Right-click on YouTube pages to open links in YT Downloader",
+  "permissions": ["contextMenus", "tabs", "nativeMessaging"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

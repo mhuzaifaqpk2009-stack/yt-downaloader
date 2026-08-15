@@ -1,0 +1,188 @@
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>pushd "E:\Huzaifa\Software Dev\Youtube dowlaoder\build\.." 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>set "ISS_FILE=E:\Huzaifa\Software Dev\Youtube dowlaoder\build\installer.iss" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo [DEBUG] START build_installer.bat 
+[DEBUG] START build_installer.bat
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo =================================================== 
+===================================================
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   YT Downloader - Installer Build 
+  YT Downloader - Installer Build
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo =================================================== 
+===================================================
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo [DEBUG] checking dist\YT_Downloader.exe 
+[DEBUG] checking dist\YT_Downloader.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>REM --- Check that portable exe exists --- 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>if not exist "dist\YT_Downloader.exe" goto :no_portable 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo [DEBUG] portable exe exists 
+[DEBUG] portable exe exists
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo Using portable executable: dist\YT_Downloader.exe 
+Using portable executable: dist\YT_Downloader.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>goto :has_portable 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>REM --- Locate Inno Setup compiler (iscc) --- 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>set "ISCC=" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>set "ISS_X86=C:\Progra~2\Inno Setup 6\ISCC.exe" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>set "ISS_X64=C:\Progra~1\Inno Setup 6\ISCC.exe" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo [DEBUG] checking ISS_X86=C:\Progra~2\Inno Setup 6\ISCC.exe 
+[DEBUG] checking ISS_X86=C:\Progra~2\Inno Setup 6\ISCC.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo [DEBUG] checking ISS_X64=C:\Progra~1\Inno Setup 6\ISCC.exe 
+[DEBUG] checking ISS_X64=C:\Progra~1\Inno Setup 6\ISCC.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>if exist "C:\Progra~2\Inno Setup 6\ISCC.exe" set "ISCC=C:\Progra~2\Inno Setup 6\ISCC.exe" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>if exist "C:\Progra~1\Inno Setup 6\ISCC.exe" set "ISCC=C:\Progra~1\Inno Setup 6\ISCC.exe" 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>if "C:\Progra~2\Inno Setup 6\ISCC.exe" == "" goto :find_iscc 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>goto :after_iscc 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo Using Inno Setup: C:\Progra~2\Inno Setup 6\ISCC.exe 
+Using Inno Setup: C:\Progra~2\Inno Setup 6\ISCC.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo Building installer... 
+Building installer...
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>"C:\Progra~2\Inno Setup 6\ISCC.exe" "E:\Huzaifa\Software Dev\Youtube dowlaoder\build\installer.iss" 
+Inno Setup 6 Command-Line Compiler
+Copyright (C) 1997-2026 Jordan Russell. All rights reserved.
+Portions Copyright (C) 2000-2026 Martijn Laan. All rights reserved.
+Portions Copyright (C) 2001-2004 Alex Yackimoff. All rights reserved.
+https://www.innosetup.com
+
+Compiler engine version: Inno Setup 6.7.3
+Non-commercial use only
+
+Preprocessing
+   Reading file: C:\Progra~2\Inno Setup 6\ISPPBuiltins.iss
+Parsing [Setup] section, line 30
+Parsing [Setup] section, line 31
+Parsing [Setup] section, line 32
+Parsing [Setup] section, line 33
+Parsing [Setup] section, line 34
+Parsing [Setup] section, line 35
+Parsing [Setup] section, line 36
+Parsing [Setup] section, line 37
+Parsing [Setup] section, line 38
+Parsing [Setup] section, line 39
+Parsing [Setup] section, line 40
+Parsing [Setup] section, line 41
+Parsing [Setup] section, line 42
+Parsing [Setup] section, line 43
+Parsing [Setup] section, line 44
+Parsing [Setup] section, line 45
+Parsing [Setup] section, line 46
+Parsing [Setup] section, line 47
+Parsing [Setup] section, line 48
+Parsing [Setup] section, line 49
+Parsing [Setup] section, line 50
+Reading file (WizardImageFile)
+Reading file (WizardSmallImageFile)
+Preparing Setup program executable
+   Verification successful
+   Updating icons (Setup.e32)
+   Updating version info (Setup.e32)
+Determining language code pages
+Parsing [Languages] section, line 57
+   Reading file: C:\Progra~2\Inno Setup 6\Default.isl
+   Messages in script file
+Reading default messages from Default.isl
+Parsing [Languages] section, line 57
+   Reading file: C:\Progra~2\Inno Setup 6\Default.isl
+Parsing [LangOptions], [Messages], and [CustomMessages] sections
+   Messages in script file
+Reading [Code] section
+Parsing [Tasks] section, line 60
+Parsing [Icons] section, line 69
+Parsing [Icons] section, line 71
+Parsing [Icons] section, line 74
+Parsing [UninstallDelete] section, line 82
+Parsing [Run] section, line 78
+Parsing [Files] section, line 65
+Compiling [Code] section
+Deleting YT_Downloader_Installer.exe from output directory
+Creating setup files
+   Verification successful
+   Updating icons (Setup.exe)
+   Compressing: E:\Huzaifa\Software Dev\Youtube dowlaoder\build\\..\dist\YT_Downloader.exe
+   Compressing Setup program executable
+   Updating version info (Setup.exe)
+   Updating manifest (Setup.exe)
+
+
+Successful compile (24.813 sec). Resulting Setup program filename is:
+E:\Huzaifa\Software Dev\Youtube dowlaoder\dist\YT_Downloader_Installer.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>if 0 NEQ 0 goto :build_failed 
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo =================================================== 
+===================================================
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   Installer build complete! 
+  Installer build complete!
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   Output: dist\YT_Downloader_Installer.exe 
+  Output: dist\YT_Downloader_Installer.exe
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   Installing this .exe will: 
+  Installing this .exe will:
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo     - Install to Program Files\YT Downloader 
+    - Install to Program Files\YT Downloader
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo     - Create Start Menu shortcut 
+    - Create Start Menu shortcut
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo     - Optional Desktop shortcut 
+    - Optional Desktop shortcut
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo     - Register uninstaller in Add/Remove Programs 
+    - Register uninstaller in Add/Remove Programs
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   The installer includes everything (Python, yt-dlp, 
+  The installer includes everything (Python, yt-dlp,
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo   ffmpeg) — no internet needed after installation. 
+  ffmpeg) — no internet needed after installation.
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo =================================================== 
+===================================================
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>echo.
+
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>popd
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>endlocal
+
+E:\Huzaifa\Software Dev\Youtube dowlaoder>goto :eof 
